@@ -1,6 +1,17 @@
 <script>
     import '../app.css'
-    let location = "";
+    let lat;
+    let lon;
+    let geoValues;
+    navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude; 
+        lon = position.coords.longitude;
+        geoValues = {lat, lon};
+        console.log(geoValues);
+        return geoValues;
+    },
+    // we then handle any errors it may have caused in the most gracful way possible
+    () => console.log(`error`))
     const submit = (e) => {
         const formData = new FormData(e.target);
         const data = {};
@@ -13,8 +24,8 @@
         getConditions();
     }
     const getConditions = async () => {
-        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&hourly=temperature_2m`)
-        await console.log(`API called at ${location}`);
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m`)
+        await console.log(`API called at ${lat} and ${lon}`);
         const data = await response.json();
         const conditions = data.elevation;
         return conditions
