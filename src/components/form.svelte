@@ -1,6 +1,6 @@
 <script>
     import '../app.css'
-    let location;
+    let location = "";
     const submit = (e) => {
         const formData = new FormData(e.target);
         const data = {};
@@ -13,10 +13,10 @@
         getConditions();
     }
     const getConditions = async () => {
-        const response = await fetch(`https://goweather.herokuapp.com/weather/${location}`)
-        console.log(`API called at ${location}`);
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=40.71&longitude=-74.01&hourly=temperature_2m`)
+        await console.log(`API called at ${location}`);
         const data = await response.json();
-        const conditions = data.description;
+        const conditions = data.elevation;
         return conditions
     }
     let conditionPromise = getConditions()
