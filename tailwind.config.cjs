@@ -8,12 +8,11 @@ module.exports = {
     },
     extend: {
       colors: {
-        'primary': '#0000f4',
-        'secondary': '#3AAFB9',
-        'secondary-dark': '#21757A',
-        'secondary-darkest': '#073B3A',
-        'ppio-red': '#710627',
-        'ppio-hotshot': '#FF4D80'
+        'primary-black': '#0E131F',
+        'secondary-blueGrey': '#38405F',
+        'secondary-steel': '#59546C',
+        'secondary-silver': '#8B939C',
+        'hotshot': '#FF0035',
       },
     }
   },
